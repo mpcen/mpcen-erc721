@@ -29,4 +29,5 @@ npx hardhat help
 ## Deployment
 
 -   `npx hardhat test`
--   `npx hardhat verify --network {NETWORK} {DEPLOYED_CONTRACT_ADDRESS}`
+-   `npm run deploy:{ENV}` where ENV can be `localhost` | `rinkeby`
+-   `npx hardhat verify --network {NETWORK} {DEPLOYED_CONTRACT_ADDRESS}` to verify your contract on `etherscan.io`
