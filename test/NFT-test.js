@@ -425,17 +425,19 @@ describe('NFT', () => {
         });
 
         it('It reserves a set amount of NFTs', async () => {
-            await contract.reserve(3);
+            const reservedAmount = 100;
 
-            expect(await contract.balanceOf(owner.address)).to.equal(3);
+            await contract.reserve(reservedAmount);
 
-            for (let i = 0; i < 3; i++) {
+            expect(await contract.balanceOf(owner.address)).to.equal(
+                reservedAmount
+            );
+
+            for (let i = 0; i < reservedAmount; i++) {
                 expect(
                     await contract.tokenOfOwnerByIndex(owner.address, i)
                 ).to.equal(i + 1);
             }
-
-            // take a good look at indexes of mints
         });
 
         it('Only the owner can withdraw funds into their wallet', async () => {
@@ -444,7 +446,7 @@ describe('NFT', () => {
 
             expect(
                 Number(web3.utils.fromWei(originalBalance.toString(), 'ether'))
-            ).to.be.closeTo(9999.82, 0.01);
+            ).to.be.closeTo(9999.8, 0.01);
 
             await contract
                 .connect(otherAccount)
@@ -454,7 +456,7 @@ describe('NFT', () => {
             const newOwnerBalance = await owner.getBalance();
             expect(
                 Number(web3.utils.fromWei(newOwnerBalance.toString(), 'ether'))
-            ).to.be.closeTo(10000.82, 0.01);
+            ).to.be.closeTo(10000.8, 0.01);
 
             await expect(
                 contract.connect(otherAccount).withdraw()

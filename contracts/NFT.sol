@@ -101,10 +101,11 @@ contract NFT is ERC721Enumerable, Ownable {
     }
 
     // onlyOwner
-    function reserve(uint256 _amount) external onlyOwner {
+    function reserve(uint256 _reserveAmount) external onlyOwner {
         uint256 supply = totalSupply();
+        require(supply + _reserveAmount <= maxSupply, "Insufficient supply");
 
-        for (uint256 i = 1; i <= _amount; i++) {
+        for (uint256 i = 1; i <= _reserveAmount; i++) {
             _safeMint(msg.sender, supply + i);
         }
     }
