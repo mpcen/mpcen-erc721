@@ -13,6 +13,8 @@ Pre-req's:
     -   `INFURA_RINKEBY_URI` - Your Infura.io uri for Rinkeby
     -   `RINKEBY_ACCOUNT_PRIVATE_KEY` - Your Rinkeby account private key. Must have ETH.
     -   `ETHERSCAN_API_KEY` - Your Etherscan API key used to verifying contracts
+    -   `NFT_CONTRACT_NAME` - The contracts name
+    -   `NFT_CONTRACT_INIT_BASE_URI` - The contracts initial base uri. This is usually the hidden one
 
 Available Hardhat commands:
 
